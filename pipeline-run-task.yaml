@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: pipeline-run-task
+spec:
+  params:
+  - name: el-service
+    type: string
+  steps:
+    - name: pipeline-run
+      image: go-test
+      imagePullPolicy: Never
+      command: ["app"]
+      args: ["$(params.el-service)"]
